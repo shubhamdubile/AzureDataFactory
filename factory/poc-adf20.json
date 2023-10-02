@@ -1,0 +1,9 @@
+{
+	"name": "poc-adf20",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "493ae457-4c69-479a-ba47-760d9e4ae39e",
+		"tenantId": "9684a9b7-01f8-429a-a27c-19e270cbcc17"
+	}
+}
