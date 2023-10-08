@@ -7,6 +7,18 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "poc-adf20"
 		},
+		"LS_Destination_Shubham_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Destination_Shubham'"
+		},
+		"LS_Source_Shubham_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Source_Shubham'"
+		},
+		"LS_Destination_Shubham_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfstorageaccount.dfs.core.windows.net/"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -33,6 +45,15 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LS_Destination_Shubham_accountKey": {
+						"value": "[parameters('LS_Destination_Shubham_accountKey')]"
+					},
+					"LS_Source_Shubham_connectionString": {
+						"value": "[parameters('LS_Source_Shubham_connectionString')]"
+					},
+					"LS_Destination_Shubham_properties_typeProperties_url": {
+						"value": "[parameters('LS_Destination_Shubham_properties_typeProperties_url')]"
 					}
 				}
 			},

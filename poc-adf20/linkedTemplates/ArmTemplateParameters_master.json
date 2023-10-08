@@ -5,6 +5,15 @@
 		"factoryName": {
 			"value": "poc-adf20"
 		},
+		"LS_Destination_Shubham_accountKey": {
+			"value": ""
+		},
+		"LS_Source_Shubham_connectionString": {
+			"value": ""
+		},
+		"LS_Destination_Shubham_properties_typeProperties_url": {
+			"value": "https://adfstorageaccount.dfs.core.windows.net/"
+		},
 		"containerUri": {
 			"value": ""
 		},
