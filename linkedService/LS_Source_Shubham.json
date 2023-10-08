@@ -1,0 +1,16 @@
+{
+	"name": "LS_Source_Shubham",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=TECHNOOB\\SQLEXPRESS02;initial catalog=AdventureWorks2019;user id=root",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0MTcxMTdlNS04MGZlLTQ3MzItODRjYy1iMmM1MmM4M2QxYzEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IR-Shubham",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
