@@ -1,0 +1,12 @@
+{
+	"name": "DS_subham_source_mutiple_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Source_Shubham",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
