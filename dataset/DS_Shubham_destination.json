@@ -1,0 +1,19 @@
+{
+	"name": "DS_Shubham_destination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Destination_Shubham",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "shubham"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
