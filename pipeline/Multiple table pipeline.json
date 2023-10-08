@@ -27,6 +27,92 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "ForEach to loop throgh list of ouput of lookup",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup all tableName and SchemName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup all tableName and SchemName').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data from on prem to sql server",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "@{concat('select * from ',item().SchemName,'.',item().TableName)}",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "FlattenHierarchy"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_subham_source_mutiple_table",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_Shubham_destination_multiple",
+									"type": "DatasetReference",
+									"parameters": {
+										"schemaname": {
+											"value": "@item().SchemName",
+											"type": "Expression"
+										},
+										"tablename": "@item().TableName"
+									}
+								}
+							]
+						}
+					]
+				}
 			}
 		],
 		"annotations": []
