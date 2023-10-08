@@ -1,0 +1,21 @@
+{
+	"name": "DS_Shubham_destination_multiple",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Destination_Shubham",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
