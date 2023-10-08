@@ -77,6 +77,32 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_Shubham_destination_multiple')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_Destination_Shubham",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_Destination_Shubham')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_Source_Shubham')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -172,6 +198,67 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_Source_Shubham')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_subham_source_mutiple_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_Source_Shubham",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_Source_Shubham')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Multiple table pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Lookup all tableName and SchemName",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SqlServerSource",
+								"sqlReaderQuery": "select s.name as SchemaName, t.name as TableName\nfrom sys.tables t\niNNER jOIN SYS.schemas S\noN T.SCHEMA_ID = S.SCHEMA_ID\nWHERE S.NAME = 'Person';",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_subham_source_mutiple_table",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_subham_source_mutiple_table')]"
 			]
 		},
 		{
