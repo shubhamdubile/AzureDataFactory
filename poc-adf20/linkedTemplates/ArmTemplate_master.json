@@ -15,7 +15,15 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Source_Shubham'"
 		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfstorageaccount.dfs.core.windows.net/"
+		},
 		"LS_Destination_Shubham_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfstorageaccount.dfs.core.windows.net/"
+		},
+		"LS_managed_identity_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfstorageaccount.dfs.core.windows.net/"
 		},
@@ -52,8 +60,14 @@
 					"LS_Source_Shubham_connectionString": {
 						"value": "[parameters('LS_Source_Shubham_connectionString')]"
 					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
 					"LS_Destination_Shubham_properties_typeProperties_url": {
 						"value": "[parameters('LS_Destination_Shubham_properties_typeProperties_url')]"
+					},
+					"LS_managed_identity_properties_typeProperties_url": {
+						"value": "[parameters('LS_managed_identity_properties_typeProperties_url')]"
 					}
 				}
 			},
